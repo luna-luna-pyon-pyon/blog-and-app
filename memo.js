@@ -43,7 +43,7 @@ function saveAndRender() {
 }
 
 function render() {
-  list.innerHTML = "";
+  list.replaceChildren();
 
   for (const item of items) {
     const li = document.createElement("li");
