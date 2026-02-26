@@ -17,13 +17,6 @@ npm run build:blog
 - 一覧: `blog/index.html`
 - 各記事: `blog/YYYY-MM-DD.html`
 
-### Telegram通知（任意）
-
-GitHubリポジトリの **Settings → Secrets and variables → Actions** に以下を設定すると、
-ビルド成功/失敗をTelegram通知します。
-
-- `TELEGRAM_BOT_TOKEN`（BotFatherで発行したトークン）
-- `TELEGRAM_CHAT_ID`（通知先のchat id）
 
 ## 投稿フォーマット
 
