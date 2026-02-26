@@ -100,3 +100,25 @@ button {
 .icon-btn {
   background: #ef4444;
 }
+
+.blog-entry {
+  margin-top: 16px;
+}
+
+.blog-entry h2 {
+  margin: 0 0 10px;
+}
+
+.blog-entry h3 {
+  margin: 14px 0 8px;
+  font-size: 16px;
+}
+
+.blog-entry ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.blog-entry li {
+  margin-bottom: 6px;
+}

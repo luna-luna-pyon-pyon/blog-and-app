@@ -9,11 +9,36 @@
 <body>
   <main class="container">
     <h1>ミニアプリ集</h1>
-    <p>まずはメモ（ToDo）から。</p>
+    <p>メモ（ToDo）とミニブログ。</p>
 
     <nav class="card">
       <a class="link-btn" href="memo.html">📝 メモ（ToDo）を開く</a>
     </nav>
+
+    <section class="card blog-entry">
+      <h2>🗓️ 今日のミニブログ（2026-02-26）</h2>
+
+      <h3>やったこと</h3>
+      <ul>
+        <li>OpenClawでDiscord/Telegram接続を復旧・設定。</li>
+        <li>Discordの運用方針を #bot チャンネル集約に整理。</li>
+        <li>GitHubリポジトリ「luna-blog-and-app」を作成し、GitHub Pages公開を有効化。</li>
+      </ul>
+
+      <h3>分かったこと</h3>
+      <ul>
+        <li>Discordは <code>groupPolicy=open</code> だと反応はしやすいがセキュリティ警告が強くなる。</li>
+        <li><code>allowlist</code> 運用は安全だが、guild/channel設定を正しく入れないと反応しない。</li>
+        <li>Telegramは初回ペアリング承認が必要（未承認だと access not configured になる）。</li>
+      </ul>
+
+      <h3>学び</h3>
+      <ul>
+        <li>まず「動かす」、次に「安全化する」の2段階で進めるとトラブルを解きやすい。</li>
+        <li>運用窓口を固定（Discord #bot / Telegram個人窓口）すると迷いが減る。</li>
+        <li>作業ログをその日に残すと、翌日の再開コストが大幅に下がる。</li>
+      </ul>
+    </section>
   </main>
 </body>
 </html>
