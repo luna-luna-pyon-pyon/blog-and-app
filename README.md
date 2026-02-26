@@ -5,14 +5,15 @@
 ## ブログ運用
 
 1. `posts/YYYY-MM-DD.md` を追加（例: `posts/2026-02-26.md`）
-2. ビルド実行
+2. （ローカル確認したい場合）ビルド実行
 
 ```bash
 npm run build:blog
 ```
 
-3. 生成物を commit/push
+3. `posts/*.md` を commit/push
 
+- GitHub Actions が自動で `blog/*.html` を生成して commit します
 - 一覧: `blog/index.html`
 - 各記事: `blog/YYYY-MM-DD.html`
 
