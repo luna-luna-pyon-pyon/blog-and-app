@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
+  <title>今日のミニブログ | ブログ</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <main class="container">
+    
+<a class="back-link" href="index.html">← ブログ一覧へ</a>
+<h1>今日のミニブログ</h1>
+<p>2026-02-26</p>
+<div class="card blog-entry"><h2>やったこと</h2>
+<ul>
+<li>OpenClawでDiscord/Telegram接続を復旧・設定。</li>
+<li>Discordの運用方針を #bot チャンネル集約に整理。</li>
+<li>GitHubリポジトリを作成し、GitHub Pages公開を有効化。</li>
+</ul>
+<h2>分かったこと</h2>
+<ul>
+<li>Discordは <code>groupPolicy=open</code> だと反応しやすいが、セキュリティ警告が強くなる。</li>
+<li><code>allowlist</code> は安全だが、guild/channel設定を正しく入れないと反応しない。</li>
+<li>Telegramは初回ペアリング承認が必要。</li>
+</ul>
+<h2>学び</h2>
+<ul>
+<li>まず「動かす」、次に「安全化する」の2段階で進めると解きやすい。</li>
+<li>窓口固定（Discord #bot / Telegram個人窓口）で運用ミスが減る。</li>
+<li>作業ログを当日中に残すと翌日の再開が速い。</li>
+</ul>
+</div>
+  </main>
+</body>
+</html>

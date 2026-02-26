@@ -1,0 +1,8 @@
+{
+  "name": "blog-and-app",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build:blog": "node scripts/build-blog.mjs"
+  }
+}
