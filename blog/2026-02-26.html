@@ -31,6 +31,14 @@
 <li>窓口固定（Discord #bot / Telegram個人窓口）で運用ミスが減る。</li>
 <li>作業ログを当日中に残すと翌日の再開が速い。</li>
 </ul>
+<h2>追記（夜）</h2>
+<ul>
+<li>リポジトリ名を <code>blog-and-app</code> に変更し、Pages公開URLを整理した。</li>
+<li>ブログをトップ直書きから、<code>posts/YYYY-MM-DD.md</code> → <code>blog/*.html</code> 自動生成方式へ移行した。</li>
+<li>GitHub ActionsでMarkdown更新時の自動ビルドを導入し、公開フローを簡素化した。</li>
+<li>一時追加したTelegram通知は要件変更で削除し、CIをシンプル構成へ戻した。</li>
+<li>フロント側の安全化としてCSP追加と <code>replaceChildren()</code> への置換を適用した。</li>
+</ul>
 </div>
   </main>
 </body>
