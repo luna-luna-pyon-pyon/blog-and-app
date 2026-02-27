@@ -303,3 +303,24 @@ button {
 .sim-table td:first-child {
   text-align: left;
 }
+
+.sim-note {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.sim-note h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.sim-note p {
+  margin: 0 0 8px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.sim-note-small {
+  color: var(--sub);
+  font-size: 13px;
+}
