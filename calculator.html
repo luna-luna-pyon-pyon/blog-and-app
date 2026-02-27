@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
+  <title>電卓</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="index.html">← トップに戻る</a>
+    <h1>🧮 電卓</h1>
+
+    <section class="calc-card">
+      <div id="calc-display" class="calc-display">0</div>
+      <div class="calc-grid">
+        <button class="calc-btn calc-fn" data-action="clear">AC</button>
+        <button class="calc-btn calc-fn" data-action="back">⌫</button>
+        <button class="calc-btn calc-op" data-value="%">%</button>
+        <button class="calc-btn calc-op" data-value="/">÷</button>
+
+        <button class="calc-btn" data-value="7">7</button>
+        <button class="calc-btn" data-value="8">8</button>
+        <button class="calc-btn" data-value="9">9</button>
+        <button class="calc-btn calc-op" data-value="*">×</button>
+
+        <button class="calc-btn" data-value="4">4</button>
+        <button class="calc-btn" data-value="5">5</button>
+        <button class="calc-btn" data-value="6">6</button>
+        <button class="calc-btn calc-op" data-value="-">−</button>
+
+        <button class="calc-btn" data-value="1">1</button>
+        <button class="calc-btn" data-value="2">2</button>
+        <button class="calc-btn" data-value="3">3</button>
+        <button class="calc-btn calc-op" data-value="+">＋</button>
+
+        <button class="calc-btn" data-value="0">0</button>
+        <button class="calc-btn" data-value=".">.</button>
+        <button class="calc-btn calc-eq" data-action="equals">=</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
