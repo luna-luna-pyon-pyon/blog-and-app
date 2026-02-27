@@ -324,3 +324,23 @@ button {
   color: var(--sub);
   font-size: 13px;
 }
+
+.tetris-wrap {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+#tetris {
+  background: #0f172a;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.tetris-side {
+  flex: 1;
+  min-width: 220px;
+  display: grid;
+  gap: 10px;
+}
