@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests" />
+  <title>金額資産シミュレーション</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="index.html">← 一覧に戻る</a>
+    <h1>金額資産シミュレーション（複利）</h1>
+    <p>初期資産・毎月積立・年利・年数を入れると、将来資産を計算します。</p>
+
+    <section class="card sim-card">
+      <div class="sim-grid">
+        <label>初期資産（円）<input id="initial" type="number" min="0" step="1000" value="1000000" /></label>
+        <label>毎月積立（円）<input id="monthly" type="number" min="0" step="1000" value="50000" /></label>
+        <label>年利（%）<input id="annualRate" type="number" min="0" max="100" step="0.1" value="5" /></label>
+        <label>運用年数（年）<input id="years" type="number" min="1" max="100" step="1" value="20" /></label>
+      </div>
+      <div class="row">
+        <button id="calcBtn" type="button">計算</button>
+        <button id="resetBtn" type="button">リセット</button>
+      </div>
+
+      <dl class="sim-summary" aria-live="polite">
+        <div><dt>最終資産</dt><dd id="finalValue">¥0</dd></div>
+        <div><dt>元本合計</dt><dd id="principalValue">¥0</dd></div>
+        <div><dt>運用益</dt><dd id="profitValue">¥0</dd></div>
+      </dl>
+
+      <div class="table-wrap">
+        <table class="sim-table">
+          <thead>
+            <tr><th>年</th><th>年末資産</th><th>元本累計</th><th>運用益</th></tr>
+          </thead>
+          <tbody id="resultBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="asset-sim.js" defer></script>
+</body>
+</html>
