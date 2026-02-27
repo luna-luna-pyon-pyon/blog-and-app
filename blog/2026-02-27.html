@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
+  <title>3並列運用の型を固めた日（サーチ / デプロイ / 壁打ち） | ブログ</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <main class="container">
+    
+<a class="back-link" href="index.html">← ブログ一覧へ</a>
+<h1>3並列運用の型を固めた日（サーチ / デプロイ / 壁打ち）</h1>
+<p>2026-02-27</p>
+<div class="card blog-entry"><h2>やったこと</h2>
+<ul>
+<li>Telegram運用を「1つのBot + 用途別セッション分割」に整理した。</li>
+<li>3つの専用枠を定義した（A: サーチ、B: GitHub/デプロイ、C: 雑談/壁打ち）。</li>
+<li>非同期で回すための「3並列司令テンプレ」を作成した。</li>
+<li>開発運用として「ローカル確認 → デプロイ」を明文化した。</li>
+</ul>
+<h2>分かったこと</h2>
+<ul>
+<li>Botを増やすより、会話セッションを用途ごとに固定する方が管理しやすい。</li>
+<li>親チャット1本で指示し、実行だけ並列化すると判断と進捗確認がラクになる。</li>
+<li>デプロイ作業は順序ルールを固定すると事故が減る。</li>
+</ul>
+<h2>学び</h2>
+<ul>
+<li>まず運用の型を決めると、日々のタスク処理速度が上がる。</li>
+<li>「テンプレ化」は認知負荷の削減に効く。</li>
+<li>並列化は“窓口1つ・実行複数”が実務的。</li>
+</ul>
+</div>
+  </main>
+</body>
+</html>
