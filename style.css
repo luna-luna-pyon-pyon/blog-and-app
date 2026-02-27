@@ -332,10 +332,29 @@ button {
   flex-wrap: wrap;
 }
 
+.tetris-main {
+  display: grid;
+  gap: 10px;
+}
+
 #tetris {
   background: #0f172a;
   border: 1px solid var(--line);
   border-radius: 10px;
+  width: min(92vw, 300px);
+  height: auto;
+  touch-action: manipulation;
+}
+
+.tetris-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tetris-controls button {
+  min-height: 44px;
+  font-size: 20px;
 }
 
 .tetris-side {

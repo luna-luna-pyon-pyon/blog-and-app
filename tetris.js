@@ -74,6 +74,7 @@ if (typeof document !== 'undefined') {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('startBtn');
   const pauseBtn = document.getElementById('pauseBtn');
+  const touchControls = document.querySelector('.tetris-controls');
 
   let board = createBoard();
   let piece = randomPiece();
@@ -202,8 +203,7 @@ if (typeof document !== 'undefined') {
     requestAnimationFrame(tick);
   }
 
-  startBtn.addEventListener('click', startGame);
-  pauseBtn.addEventListener('click', () => {
+  function togglePause() {
     if (gameOver) return;
     running = !running;
     statusEl.textContent = running ? 'プレイ中' : '一時停止中';
@@ -211,30 +211,52 @@ if (typeof document !== 'undefined') {
       lastTime = performance.now();
       requestAnimationFrame(tick);
     }
-  });
+  }
+
+  function handleAction(action) {
+    if (action === 'pause') {
+      togglePause();
+      return;
+    }
+    if (!running) return;
+
+    if (action === 'left') move(-1);
+    else if (action === 'right') move(1);
+    else if (action === 'down') softDrop();
+    else if (action === 'rotate') rotatePiece();
+    else if (action === 'drop') hardDrop();
+
+    draw();
+  }
+
+  startBtn.addEventListener('click', startGame);
+  pauseBtn.addEventListener('click', togglePause);
+
+  if (touchControls) {
+    touchControls.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-act]');
+      if (!btn) return;
+      handleAction(btn.dataset.act);
+    });
+  }
 
   document.addEventListener('keydown', (e) => {
-    if (!running) {
-      if (e.key.toLowerCase() === 'p' && !gameOver) {
-        running = true;
-        statusEl.textContent = 'プレイ中';
-        lastTime = performance.now();
-        requestAnimationFrame(tick);
-      }
+    const key = e.key;
+    if (['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', ' '].includes(key) || e.code === 'Space') {
+      e.preventDefault();
+    }
+
+    if (!running && key.toLowerCase() === 'p' && !gameOver) {
+      togglePause();
       return;
     }
 
-    if (e.key === 'ArrowLeft') move(-1);
-    else if (e.key === 'ArrowRight') move(1);
-    else if (e.key === 'ArrowDown') softDrop();
-    else if (e.key === 'ArrowUp') rotatePiece();
-    else if (e.code === 'Space') hardDrop();
-    else if (e.key.toLowerCase() === 'p') {
-      running = false;
-      statusEl.textContent = '一時停止中';
-    }
-
-    draw();
+    if (key === 'ArrowLeft') handleAction('left');
+    else if (key === 'ArrowRight') handleAction('right');
+    else if (key === 'ArrowDown') handleAction('down');
+    else if (key === 'ArrowUp') handleAction('rotate');
+    else if (e.code === 'Space') handleAction('drop');
+    else if (key.toLowerCase() === 'p') handleAction('pause');
   });
 
   draw();

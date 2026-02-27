@@ -14,7 +14,17 @@
     <p>← → 移動 / ↑ 回転 / ↓ ソフトドロップ / Space ハードドロップ / P 一時停止</p>
 
     <section class="card tetris-wrap">
-      <canvas id="tetris" width="300" height="600" aria-label="テトリス盤面"></canvas>
+      <div class="tetris-main">
+        <canvas id="tetris" width="300" height="600" aria-label="テトリス盤面"></canvas>
+        <div class="tetris-controls" aria-label="タッチ操作">
+          <button type="button" data-act="left">◀</button>
+          <button type="button" data-act="rotate">⟳</button>
+          <button type="button" data-act="right">▶</button>
+          <button type="button" data-act="down">▼</button>
+          <button type="button" data-act="drop">⤓</button>
+          <button type="button" data-act="pause">⏯</button>
+        </div>
+      </div>
 
       <aside class="tetris-side">
         <dl class="sim-summary">
