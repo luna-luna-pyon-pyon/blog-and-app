@@ -177,3 +177,55 @@ button {
 .blog-entry li {
   margin-bottom: 6px;
 }
+
+.wordcount-card {
+  display: grid;
+  gap: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.wc-textarea {
+  width: 100%;
+  min-height: 220px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.wc-stats {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.wc-stats div {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.wc-stats dt {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.wc-stats dd {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'" />
+  <title>ワードカウント</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="index.html">← 一覧に戻る</a>
+    <h1>ワードカウント</h1>
+    <p>入力テキストの文字数・単語数・行数などをリアルタイム集計します。</p>
+
+    <section class="card wordcount-card" aria-label="ワードカウント">
+      <label for="sourceText" class="sr-only">テキスト入力</label>
+      <textarea id="sourceText" class="wc-textarea" placeholder="ここにテキストを入力"></textarea>
+      <div class="row">
+        <button id="clearBtn" type="button">クリア</button>
+      </div>
+
+      <dl class="wc-stats" aria-live="polite">
+        <div><dt>文字数（空白込み）</dt><dd id="charsWithSpaces">0</dd></div>
+        <div><dt>文字数（空白除く）</dt><dd id="charsWithoutSpaces">0</dd></div>
+        <div><dt>単語数</dt><dd id="wordCount">0</dd></div>
+        <div><dt>行数</dt><dd id="lineCount">0</dd></div>
+        <div><dt>段落数</dt><dd id="paragraphCount">0</dd></div>
+        <div><dt>読了目安</dt><dd id="readingTime">0分</dd></div>
+      </dl>
+    </section>
+  </main>
+
+  <script src="wordcount.js" defer></script>
+</body>
+</html>
