@@ -91,7 +91,7 @@ if (typeof document !== 'undefined') {
   resetBtn.addEventListener('click', () => {
     initialEl.value = '1000000';
     monthlyEl.value = '50000';
-    annualRateEl.value = '5';
+    annualRateEl.value = '4';
     yearsEl.value = '20';
     render();
   });
