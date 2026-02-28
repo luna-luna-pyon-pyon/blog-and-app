@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+  <title>HTMXサンプル3: ロードモア</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../vendor/htmx.min.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>サンプル3: ロードモア（段階追記）</h1>
+    <p>「もっと読む」で断片を末尾に追加していく。</p>
+
+    <section id="timeline" class="card" aria-live="polite">
+      <ul>
+        <li>初期表示: HTMXの読み込み完了</li>
+      </ul>
+      <button class="link-btn" hx-get="fragments/timeline/page1.html" hx-target="#timeline" hx-swap="beforeend">もっと読む</button>
+    </section>
+
+    <p><a href="index.html">← チュートリアル一覧へ</a></p>
+  </main>
+</body>
+</html>

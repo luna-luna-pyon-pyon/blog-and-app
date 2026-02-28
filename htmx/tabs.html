@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+  <title>HTMXサンプル1: タブ切り替え</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../vendor/htmx.min.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>サンプル1: タブ切り替え（部分更新）</h1>
+    <p>各ボタンでHTML断片を読み込んで、下のパネルだけ差し替える。</p>
+
+    <section class="card nav-links" aria-label="タブ">
+      <button class="link-btn" hx-get="fragments/tabs/wordcount.html" hx-target="#tab-panel" hx-swap="innerHTML">ワードカウント</button>
+      <button class="link-btn" hx-get="fragments/tabs/tetris.html" hx-target="#tab-panel" hx-swap="innerHTML">テトリス</button>
+      <button class="link-btn" hx-get="fragments/tabs/compound.html" hx-target="#tab-panel" hx-swap="innerHTML">複利計算</button>
+    </section>
+
+    <section id="tab-panel" class="card" aria-live="polite">
+      <p>上のボタンを押して内容を表示。</p>
+    </section>
+
+    <p><a href="index.html">← チュートリアル一覧へ</a></p>
+  </main>
+</body>
+</html>
