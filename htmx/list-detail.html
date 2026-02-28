@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+  <title>HTMXサンプル2: 一覧→詳細</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="../vendor/htmx.min.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1>サンプル2: 一覧→詳細（マスター詳細UI）</h1>
+    <p>左の一覧を押すと、右の詳細パネルだけ差し替える。</p>
+
+    <section class="card" style="display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:start;">
+      <nav class="nav-links" aria-label="アプリ一覧">
+        <button class="link-btn" hx-get="fragments/items/wordcount.html" hx-target="#detail" hx-swap="innerHTML">ワードカウント</button>
+        <button class="link-btn" hx-get="fragments/items/tetris.html" hx-target="#detail" hx-swap="innerHTML">テトリス</button>
+        <button class="link-btn" hx-get="fragments/items/compound.html" hx-target="#detail" hx-swap="innerHTML">複利計算</button>
+      </nav>
+
+      <article id="detail" class="card" aria-live="polite">
+        <h2>詳細パネル</h2>
+        <p>一覧から1つ選ぶとここに詳細が表示されます。</p>
+      </article>
+    </section>
+
+    <p><a href="index.html">← チュートリアル一覧へ</a></p>
+  </main>
+</body>
+</html>
