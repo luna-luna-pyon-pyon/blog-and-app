@@ -1,0 +1,7 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+<title>HTMX 6: Load Polling風</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
+</head><body><main class="container"><h1>6) Load Polling風進捗</h1><p>load + delay + outerHTML でステップ進行を表現。</p>
+<div class="card" hx-get="fragments/progress/step1.html" hx-trigger="load delay:700ms" hx-swap="outerHTML">初期化中...</div>
+<p><a href="index.html">← 一覧へ</a></p></main></body></html>

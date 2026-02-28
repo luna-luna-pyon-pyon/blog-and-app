@@ -4,19 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
-  <title>HTMXチュートリアル集</title>
+  <title>HTMXチュートリアル7選</title>
   <link rel="stylesheet" href="../style.css" />
   <script src="../vendor/htmx.min.js" defer></script>
 </head>
 <body>
   <main class="container">
-    <h1>HTMXだけで動くチュートリアル</h1>
-    <p>GitHub Pages（静的配信）だけで動くサンプル3本。</p>
+    <h1>HTMXチュートリアル7選</h1>
+    <p>静的ホスティング（GitHub Pages）だけで試せる、使いたくなるサンプル集。</p>
 
     <nav class="card nav-links">
-      <a class="link-btn" href="tabs.html">1) タブ切り替え（部分更新）</a>
-      <a class="link-btn" href="list-detail.html">2) 一覧→詳細（マスター詳細UI）</a>
-      <a class="link-btn" href="timeline.html">3) ロードモア（段階的に追記）</a>
+      <a class="link-btn" href="sample-1-basics.html">1) まずは部分更新（hx-get / hx-target / hx-swap）</a>
+      <a class="link-btn" href="sample-2-master-detail.html">2) 一覧→詳細（マスター詳細UI）</a>
+      <a class="link-btn" href="sample-3-faq-lazy.html">3) FAQ遅延ロード（必要時だけ取得）</a>
+      <a class="link-btn" href="sample-4-load-more.html">4) ロードモア（追記型フィード）</a>
+      <a class="link-btn" href="sample-5-trigger-delay.html">5) Trigger & Delay（入力待ちして更新）</a>
+      <a class="link-btn" href="sample-6-load-polling.html">6) Load Polling風（進捗ステップ）</a>
+      <a class="link-btn" href="sample-7-oob.html">7) OOB Swap（複数箇所を同時更新）</a>
       <a class="link-btn" href="../index.html">← トップへ戻る</a>
     </nav>
   </main>

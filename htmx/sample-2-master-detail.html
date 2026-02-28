@@ -1,0 +1,14 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+<title>HTMX 2: 一覧→詳細</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
+</head><body><main class="container"><h1>2) 一覧→詳細</h1><p>左の一覧選択で右の詳細だけ更新。</p>
+<section class="card" style="display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:start;">
+<nav class="nav-links" aria-label="一覧">
+<button class="link-btn" hx-get="fragments/master/a.html" hx-target="#detail" hx-swap="innerHTML">アプリA</button>
+<button class="link-btn" hx-get="fragments/master/b.html" hx-target="#detail" hx-swap="innerHTML">アプリB</button>
+<button class="link-btn" hx-get="fragments/master/c.html" hx-target="#detail" hx-swap="innerHTML">アプリC</button>
+</nav>
+<article id="detail" class="card" aria-live="polite"><h2>詳細</h2><p>項目を選んで表示</p></article>
+</section>
+<p><a href="index.html">← 一覧へ</a></p></main></body></html>
