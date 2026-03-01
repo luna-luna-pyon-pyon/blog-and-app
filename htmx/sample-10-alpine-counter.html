@@ -3,15 +3,15 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
 <title>10) Alpine.js カウンター</title>
 <link rel="stylesheet" href="../style.css" />
-<script src="../vendor/alpine.min.js" defer></script>
 <script src="sample-10-alpine-counter.js" defer></script>
+<script src="../vendor/alpine-csp.min.js" defer></script>
 </head>
 <body>
 <main class="container">
   <h1>10) Alpine.js カウンター</h1>
   <p>Reactより軽く、HTML中心で書けるリアクティブな最小例。</p>
 
-  <section class="card" x-data="counter()" x-init="init()">
+  <section class="card" x-data="counter">
     <h2>デモ（実動）</h2>
     <p>現在値: <strong x-text="count">0</strong></p>
     <div class="row">
@@ -34,24 +34,24 @@
 
   <section class="card">
     <h2>このサンプルのコード</h2>
-    <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;section x-data="counter()" x-init="init()"&gt;
+    <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;section x-data="counter"&gt;
   &lt;strong x-text="count"&gt;0&lt;/strong&gt;
   &lt;button @click="inc"&gt;+1&lt;/button&gt;
 &lt;/section&gt;
 
-function counter() {
-  return {
+document.addEventListener('alpine:init', () =&gt; {
+  Alpine.data('counter', () =&gt; ({
     count: 0,
     init() { this.count = Number(localStorage.getItem('demo.alpine.counter') ?? 0) },
     inc() { this.count++; localStorage.setItem('demo.alpine.counter', this.count) }
-  }
-}
+  }))
+})
 </code></pre>
   </section>
 
   <section class="card">
     <h2>補足（運用時）</h2>
-    <p>このページでは分かりやすさ優先でCDNを使用。運用環境ではローカル配置（self-host）推奨。</p>
+    <p>このページはCSP制約に対応するため、<code>@alpinejs/csp</code> ビルドをローカル配置して使用。</p>
   </section>
 
   <p><a href="index.html">← 一覧へ</a></p>
