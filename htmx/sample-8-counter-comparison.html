@@ -1,0 +1,57 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+<title>HTMX 8: カウンター比較（React vs HTMX）</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
+</head><body><main class="container"><h1>8) カウンター比較（React vs HTMX）</h1>
+<p>同じ「+1/-1/Reset」を、HTMXの考え方で実装した最小サンプル。</p>
+
+<section class="card">
+  <h2>デモ（HTMX版）</h2>
+  <div id="counter-panel" aria-live="polite">
+    <p>現在値: <strong id="count">0</strong></p>
+    <div class="row">
+      <button class="link-btn" hx-get="fragments/counter/plus.html" hx-target="#counter-panel" hx-swap="innerHTML">+1</button>
+      <button class="link-btn" hx-get="fragments/counter/minus.html" hx-target="#counter-panel" hx-swap="innerHTML">-1</button>
+      <button class="link-btn" hx-get="fragments/counter/reset.html" hx-target="#counter-panel" hx-swap="innerHTML">Reset</button>
+    </div>
+  </div>
+  <p class="sim-note-small">※ 静的サンプルなので値は断片側で表現。実運用ではサーバー側状態で値を返す。</p>
+</section>
+
+<section class="card">
+  <h2>HTMXコード（最小）</h2>
+  <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;div id="counter-panel"&gt;
+  &lt;p&gt;現在値: &lt;strong&gt;0&lt;/strong&gt;&lt;/p&gt;
+  &lt;button hx-get="/counter/plus" hx-target="#counter-panel" hx-swap="innerHTML"&gt;+1&lt;/button&gt;
+&lt;/div&gt;
+
+# /counter/plus は更新後HTML断片を返す
+</code></pre>
+</section>
+
+<section class="card">
+  <h2>Reactとの比較</h2>
+  <ul>
+    <li><strong>React</strong>: <code>setCount(count + 1)</code> で state 更新 → 再レンダー</li>
+    <li><strong>HTMX</strong>: click をトリガーに断片取得 → <code>hx-target</code> を差し替え</li>
+    <li><strong>真実の置き場所</strong>: Reactはクライアントstate寄り、HTMXはレスポンスHTML寄り</li>
+  </ul>
+  <pre style="white-space:pre-wrap;overflow:auto;"><code>// React (イメージ)
+const [count, setCount] = useState(0)
+&lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;+1&lt;/button&gt;
+
+// HTMX (イメージ)
+&lt;button hx-post="/counter/plus" hx-target="#counter-panel"&gt;+1&lt;/button&gt;
+</code></pre>
+</section>
+
+<section class="card">
+  <h2>使い分け評価</h2>
+  <ul>
+    <li>UI状態が複雑でクライアント完結したい → Reactが自然</li>
+    <li>フォーム/CRUD中心でサーバー主導HTMLに寄せたい → HTMXが軽くて速い</li>
+    <li>混在も可: 画面の大半をHTMX、重いウィジェットだけReact も実務的</li>
+  </ul>
+</section>
+
+<p><a href="index.html">← 一覧へ</a></p></main></body></html>
