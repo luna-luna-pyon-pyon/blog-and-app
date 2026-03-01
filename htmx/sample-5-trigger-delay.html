@@ -1,20 +1,31 @@
 <!doctype html><html lang="ja"><head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
-<title>HTMX 5: Trigger & Delay</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
+<title>HTMX 5: Trigger & Delay</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script><script src="sample-5-trigger-delay.js" defer></script>
 </head><body><main class="container"><h1>5) Trigger & Delay</h1><p>入力停止後に更新（キータイプごとの連打を抑制）。</p>
 <section class="card">
-<label for="demo-q">キーワード</label>
+<label for="demo-q">キーワード（ゆっくり入力してみて）</label>
 <input id="demo-q" name="q" placeholder="例: tetris"
   hx-get="fragments/search/result.html"
   hx-trigger="keyup changed delay:500ms"
   hx-target="#search-result"
   hx-indicator="#loading" />
 <p id="loading" class="htmx-indicator">検索中...</p>
+<p>ポイント: キーを打つたびではなく、<strong>入力が500ms止まった時だけ</strong>リクエストされます。</p>
 </section>
 <section id="search-result" class="card"><p>入力して0.5秒待つと更新。</p></section>
+<section class="card">
+  <h2>リクエストログ</h2>
+  <p>ここに実際の発火タイミングを表示します（delayの体感用）。</p>
+  <ul id="request-log"><li>まだリクエストはありません</li></ul>
+</section>
 <section class="card"><h2>解説</h2><ul><li><code>changed</code> で値が変わった時だけ発火。</li><li><code>delay:500ms</code> で打鍵連打の無駄リクエストを削減。</li><li>ライブ検索・候補表示の最小実装として強力。</li></ul></section>
 <section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;input hx-get="/search"
   hx-trigger="keyup changed delay:500ms"
-  hx-target="#result" /&gt;</code></pre></section>
+  hx-target="#result" /&gt;
+
+&lt;!-- 読み方 --&gt;
+keyup: キー入力で検知
+changed: 値が変わった時だけ
+delay:500ms: 500ms止まったら実行</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>
