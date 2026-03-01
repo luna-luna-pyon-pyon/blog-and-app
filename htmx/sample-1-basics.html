@@ -2,11 +2,35 @@
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
 <title>HTMX 1: 部分更新</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
-</head><body><main class="container"><h1>1) 部分更新</h1><p>クリックで下のカードだけ差し替え。</p>
+</head><body><main class="container"><h1>1) 部分更新</h1><p>クリックで下のカードだけ差し替え。ワードカウント/複利計算は中でそのまま動作。</p>
 <section class="card nav-links">
 <button class="link-btn" hx-get="fragments/basics/wordcount.html" hx-target="#panel" hx-swap="innerHTML">ワードカウント</button>
 <button class="link-btn" hx-get="fragments/basics/tetris.html" hx-target="#panel" hx-swap="innerHTML">テトリス</button>
 <button class="link-btn" hx-get="fragments/basics/compound.html" hx-target="#panel" hx-swap="innerHTML">複利計算</button>
 </section>
 <section id="panel" class="card" aria-live="polite"><p>どれか押してみて。</p></section>
+
+<section class="card">
+  <h2>解説</h2>
+  <ul>
+    <li><code>hx-get</code>: 取得するHTML断片のURL</li>
+    <li><code>hx-target</code>: 置き換え先のDOM要素（ここでは <code>#panel</code>）</li>
+    <li><code>hx-swap="innerHTML"</code>: ターゲット要素の中身だけ差し替える</li>
+  </ul>
+  <p>ページ全体をリロードせず、必要な部分だけ更新できるのがHTMXの気持ちいいところ。</p>
+</section>
+
+<section class="card">
+  <h2>このサンプルのコード</h2>
+  <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;button
+  hx-get="fragments/basics/wordcount.html"
+  hx-target="#panel"
+  hx-swap="innerHTML"&gt;
+  ワードカウント
+&lt;/button&gt;
+
+&lt;section id="panel"&gt;...差し替え先...&lt;/section&gt;
+</code></pre>
+</section>
+
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>
