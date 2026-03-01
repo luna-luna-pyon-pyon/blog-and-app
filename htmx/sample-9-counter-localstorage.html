@@ -17,7 +17,7 @@
 </section>
 
 <section class="card">
-  <h2>解説</h2>
+  <h2>解説（LocalStorage版）</h2>
   <ul>
     <li><code>localStorage</code> から初期値を読み出して表示。</li>
     <li>クリックで数値を更新し、DOMの <code>textContent</code> を再描画。</li>
@@ -26,7 +26,7 @@
 </section>
 
 <section class="card">
-  <h2>このサンプルのコード</h2>
+  <h2>このサンプルのコード（LocalStorage）</h2>
   <pre style="white-space:pre-wrap;overflow:auto;"><code>const KEY = 'demo.counter.value';
 let count = Number(localStorage.getItem(KEY) ?? '0');
 countEl.textContent = String(count);
@@ -39,8 +39,27 @@ plusBtn.addEventListener('click', () =&gt; {
 </section>
 
 <section class="card">
-  <h2>HTMXとの位置づけ</h2>
-  <p>この例はHTMXを使わず、DOM/BOMだけで完結。<br/>一方、HTMXは「サーバー（または断片HTML）を取得して差し替える」用途に向く。</p>
+  <h2>HTMX（サーバーPOST）で同じことをする場合</h2>
+  <p>動的値をサーバーで持つなら、<code>hx-post</code> で更新要求を送り、<strong>更新後のHTML断片を返して埋め込む</strong>のが基本。</p>
+  <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;div id="counter-panel"&gt;
+  &lt;p&gt;現在値: &lt;strong&gt;12&lt;/strong&gt;&lt;/p&gt;
+  &lt;button hx-post="/counter/plus"
+    hx-target="#counter-panel"
+    hx-swap="innerHTML"&gt;+1&lt;/button&gt;
+&lt;/div&gt;
+
+# サーバー側の /counter/plus は count を +1 して
+# その最新値を含む HTML断片（counter-panelの中身）を返す</code></pre>
+  <p class="sim-note-small">つまり「HTMXは差し替え係」、計算・状態保持はサーバー側が担当。</p>
+</section>
+
+<section class="card">
+  <h2>比較まとめ（どっちを使う？）</h2>
+  <ul>
+    <li><strong>LocalStorage版</strong>: 静的サイトだけで完結。実装が最小。単一ブラウザ内の保持に強い。</li>
+    <li><strong>HTMX + POST版</strong>: 複数端末で状態共有したい時に有利（サーバー状態）。</li>
+    <li><strong>判断基準</strong>: 「個人ブラウザ内だけで十分」ならLocalStorage、「共有・一貫性」ならサーバーPOST。</li>
+  </ul>
 </section>
 
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>
