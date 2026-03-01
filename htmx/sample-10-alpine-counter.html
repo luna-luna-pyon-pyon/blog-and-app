@@ -1,0 +1,86 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+<title>10) Alpine.js カウンター</title>
+<link rel="stylesheet" href="../style.css" />
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body>
+<main class="container">
+  <h1>10) Alpine.js カウンター</h1>
+  <p>Reactより軽く、HTML中心で書けるリアクティブな最小例。</p>
+
+  <section class="card" x-data="counter()" x-init="init()">
+    <h2>デモ（実動）</h2>
+    <p>現在値: <strong x-text="count">0</strong></p>
+    <div class="row">
+      <button class="link-btn" @click="inc">+1</button>
+      <button class="link-btn" @click="dec">-1</button>
+      <button class="link-btn" @click="reset">Reset</button>
+    </div>
+    <p class="sim-note-small">保存先キー: <code>demo.alpine.counter</code></p>
+  </section>
+
+  <section class="card">
+    <h2>解説</h2>
+    <ul>
+      <li><code>x-data</code> で状態とメソッドを定義</li>
+      <li><code>x-text</code> で表示をバインド</li>
+      <li><code>@click</code> でイベント処理</li>
+      <li>更新時に <code>localStorage</code> へ保存</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>このサンプルのコード</h2>
+    <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;section x-data="counter()" x-init="init()"&gt;
+  &lt;strong x-text="count"&gt;0&lt;/strong&gt;
+  &lt;button @click="inc"&gt;+1&lt;/button&gt;
+&lt;/section&gt;
+
+function counter() {
+  return {
+    count: 0,
+    init() { this.count = Number(localStorage.getItem('demo.alpine.counter') ?? 0) },
+    inc() { this.count++; localStorage.setItem('demo.alpine.counter', this.count) }
+  }
+}
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>補足（運用時）</h2>
+    <p>このページでは分かりやすさ優先でCDNを使用。運用環境ではローカル配置（self-host）推奨。</p>
+  </section>
+
+  <p><a href="index.html">← 一覧へ</a></p>
+</main>
+
+<script>
+function counter() {
+  const KEY = 'demo.alpine.counter';
+  return {
+    count: 0,
+    init() {
+      const n = Number(localStorage.getItem(KEY) ?? '0');
+      this.count = Number.isFinite(n) ? n : 0;
+    },
+    persist() {
+      localStorage.setItem(KEY, String(this.count));
+    },
+    inc() {
+      this.count += 1;
+      this.persist();
+    },
+    dec() {
+      this.count -= 1;
+      this.persist();
+    },
+    reset() {
+      this.count = 0;
+      this.persist();
+    }
+  }
+}
+</script>
+</body></html>
