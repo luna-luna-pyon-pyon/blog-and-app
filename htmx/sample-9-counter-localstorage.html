@@ -1,0 +1,46 @@
+<!doctype html><html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" />
+<title>HTMX 9: LocalStorageカウンター（DOM/BOM）</title><link rel="stylesheet" href="../style.css" /><script src="sample-9-counter-localstorage.js" defer></script>
+</head><body><main class="container"><h1>9) LocalStorageカウンター（DOM/BOM）</h1>
+<p>静的サイトで「本当に増減」し、再読み込み後も値を保持するカウンター。</p>
+
+<section class="card">
+  <h2>デモ（実動）</h2>
+  <p>現在値: <strong id="ls-count">0</strong></p>
+  <div class="row">
+    <button id="btn-plus" class="link-btn" type="button">+1</button>
+    <button id="btn-minus" class="link-btn" type="button">-1</button>
+    <button id="btn-reset" class="link-btn" type="button">Reset</button>
+  </div>
+  <p class="sim-note-small">保存先キー: <code>demo.counter.value</code></p>
+</section>
+
+<section class="card">
+  <h2>解説</h2>
+  <ul>
+    <li><code>localStorage</code> から初期値を読み出して表示。</li>
+    <li>クリックで数値を更新し、DOMの <code>textContent</code> を再描画。</li>
+    <li>更新後の値を <code>localStorage.setItem()</code> で保存。</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>このサンプルのコード</h2>
+  <pre style="white-space:pre-wrap;overflow:auto;"><code>const KEY = 'demo.counter.value';
+let count = Number(localStorage.getItem(KEY) ?? '0');
+countEl.textContent = String(count);
+
+plusBtn.addEventListener('click', () =&gt; {
+  count += 1;
+  countEl.textContent = String(count);
+  localStorage.setItem(KEY, String(count));
+});</code></pre>
+</section>
+
+<section class="card">
+  <h2>HTMXとの位置づけ</h2>
+  <p>この例はHTMXを使わず、DOM/BOMだけで完結。<br/>一方、HTMXは「サーバー（または断片HTML）を取得して差し替える」用途に向く。</p>
+</section>
+
+<p><a href="index.html">← 一覧へ</a></p></main></body></html>

@@ -5,8 +5,17 @@
 </head><body><main class="container"><h1>8) カウンター比較（React vs HTMX）</h1>
 <p>同じ「+1/-1/Reset」を、HTMXの考え方で実装した最小サンプル。</p>
 
+<section class="card" style="border-left:4px solid #e67e22;">
+  <h2>⚠️ 重要な注意</h2>
+  <p>このページのカウンターは <strong>静的サイトで動かすためのデモ</strong> です。実際に状態を計算しているのではなく、<code>hx-get</code> で用意済みHTML断片へ差し替えて「増減して見える」構成です。</p>
+  <ul>
+    <li>このデモの実装: <code>hx-get="fragments/counter/*.html"</code></li>
+    <li>実運用（サーバーあり）: <code>hx-post="/counter/plus"</code> でサーバー側で +1 して更新HTMLを返す</li>
+  </ul>
+</section>
+
 <section class="card">
-  <h2>デモ（HTMX版）</h2>
+  <h2>デモ（HTMX版・静的）</h2>
   <div id="counter-panel" aria-live="polite">
     <p>現在値: <strong id="count">0</strong></p>
     <div class="row">
@@ -15,17 +24,19 @@
       <button class="link-btn" hx-get="fragments/counter/reset.html" hx-target="#counter-panel" hx-swap="innerHTML">Reset</button>
     </div>
   </div>
-  <p class="sim-note-small">※ 静的サンプルなので値は断片側で表現。実運用ではサーバー側状態で値を返す。</p>
+  <p class="sim-note-small">※ サーバーなし環境向けの「見せ方」デモです。</p>
 </section>
 
 <section class="card">
   <h2>HTMXコード（最小）</h2>
   <pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;div id="counter-panel"&gt;
   &lt;p&gt;現在値: &lt;strong&gt;0&lt;/strong&gt;&lt;/p&gt;
-  &lt;button hx-get="/counter/plus" hx-target="#counter-panel" hx-swap="innerHTML"&gt;+1&lt;/button&gt;
+  &lt;button hx-get="fragments/counter/plus.html"
+    hx-target="#counter-panel"
+    hx-swap="innerHTML"&gt;+1&lt;/button&gt;
 &lt;/div&gt;
 
-# /counter/plus は更新後HTML断片を返す
+# 静的サイトでは、更新後のHTML断片を返す
 </code></pre>
 </section>
 
@@ -40,7 +51,7 @@
 const [count, setCount] = useState(0)
 &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;+1&lt;/button&gt;
 
-// HTMX (イメージ)
+// HTMX + サーバー (イメージ)
 &lt;button hx-post="/counter/plus" hx-target="#counter-panel"&gt;+1&lt;/button&gt;
 </code></pre>
 </section>
