@@ -6,4 +6,8 @@
 <section id="timeline" class="card"><ul><li>初期投稿: htmxセットアップ完了</li></ul>
 <button class="link-btn" hx-get="fragments/timeline/page1.html" hx-target="#timeline" hx-swap="beforeend">もっと読む</button>
 </section>
+<section class="card"><h2>解説</h2><ul><li><code>beforeend</code> は既存コンテンツを残して末尾に追記。</li><li>SNS風タイムライン、ニュース一覧の追加読み込みで便利。</li><li>ページ遷移を減らして閲覧継続率を上げやすい。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;button hx-get="fragments/timeline/page1.html"
+  hx-target="#timeline"
+  hx-swap="beforeend"&gt;もっと読む&lt;/button&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>

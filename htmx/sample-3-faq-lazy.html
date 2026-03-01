@@ -9,4 +9,10 @@
 <button class="link-btn" hx-get="fragments/faq/q3.html" hx-target="#answer" hx-swap="innerHTML">Q3: 何は無理？</button>
 </section>
 <article id="answer" class="card"><p>質問を選んでね。</p></article>
+<section class="card"><h2>解説</h2><ul><li>初回読み込みを軽くして、必要時にだけ取得する設計。</li><li>ヘルプ/FAQ/ドキュメントサイトと相性が良い。</li><li>静的断片でも十分に体験を改善できる。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;button hx-get="fragments/faq/q1.html"
+  hx-target="#answer"
+  hx-swap="innerHTML"&gt;Q1&lt;/button&gt;
+
+&lt;article id="answer"&gt;...回答表示...&lt;/article&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>

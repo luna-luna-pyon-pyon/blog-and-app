@@ -13,4 +13,8 @@
 <p id="loading" class="htmx-indicator">検索中...</p>
 </section>
 <section id="search-result" class="card"><p>入力して0.5秒待つと更新。</p></section>
+<section class="card"><h2>解説</h2><ul><li><code>changed</code> で値が変わった時だけ発火。</li><li><code>delay:500ms</code> で打鍵連打の無駄リクエストを削減。</li><li>ライブ検索・候補表示の最小実装として強力。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;input hx-get="/search"
+  hx-trigger="keyup changed delay:500ms"
+  hx-target="#result" /&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>

@@ -4,4 +4,10 @@
 <title>HTMX 6: Load Polling風</title><link rel="stylesheet" href="../style.css" /><script src="../vendor/htmx.min.js" defer></script>
 </head><body><main class="container"><h1>6) Load Polling風進捗</h1><p>load + delay + outerHTML でステップ進行を表現。</p>
 <div class="card" hx-get="fragments/progress/step1.html" hx-trigger="load delay:700ms" hx-swap="outerHTML">初期化中...</div>
+<section class="card"><h2>解説</h2><ul><li>画面表示時に自動で処理開始できる。</li><li><code>outerHTML</code> 差し替えで「状態の進行」を直感的に見せられる。</li><li>進捗バーや待機UIに応用しやすい。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;div hx-get="fragments/progress/step1.html"
+  hx-trigger="load delay:700ms"
+  hx-swap="outerHTML"&gt;
+  初期化中...
+&lt;/div&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>

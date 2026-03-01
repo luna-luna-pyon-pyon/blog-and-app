@@ -8,4 +8,11 @@
 <div id="toast">まだ追加していません。</div>
 <button class="link-btn" hx-get="fragments/oob/add-item.html" hx-target="#toast" hx-swap="innerHTML">カートに追加</button>
 </section>
+<section class="card"><h2>解説</h2><ul><li>メイン更新（トースト）に加え、別DOM（カウント）も同時更新。</li><li>ヘッダー通知・カート件数・バッジ更新で特に便利。</li><li>画面全体の整合性を1リクエストで保てる。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;div id="toast"&gt;...&lt;/div&gt;
+&lt;strong id="cart-count"&gt;0&lt;/strong&gt;
+
+&lt;!-- レスポンス側 --&gt;
+&lt;div id="toast"&gt;追加しました&lt;/div&gt;
+&lt;strong id="cart-count" hx-swap-oob="true"&gt;1&lt;/strong&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>

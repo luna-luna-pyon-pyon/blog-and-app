@@ -11,4 +11,10 @@
 </nav>
 <article id="detail" class="card" aria-live="polite"><h2>詳細</h2><p>項目を選んで表示</p></article>
 </section>
+<section class="card"><h2>解説</h2><ul><li>マスター（一覧）と詳細を分離する王道UI。</li><li>クリックされた項目だけサーバー（今回は静的断片）から取得。</li><li>詳細領域の差し替えだけで済むので高速。</li></ul></section>
+<section class="card"><h2>このサンプルのコード</h2><pre style="white-space:pre-wrap;overflow:auto;"><code>&lt;button hx-get="fragments/master/a.html"
+  hx-target="#detail"
+  hx-swap="innerHTML"&gt;アプリA&lt;/button&gt;
+
+&lt;article id="detail"&gt;...差し替え先...&lt;/article&gt;</code></pre></section>
 <p><a href="index.html">← 一覧へ</a></p></main></body></html>
